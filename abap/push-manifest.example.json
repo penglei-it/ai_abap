@@ -1,0 +1,6 @@
+[
+  { "name": "ZFOO_TOP", "type": "PROG", "file": "zfoo_top.inc.abap", "isInclude": true },
+  { "name": "ZFOO_F01", "type": "PROG", "file": "zfoo_f01.inc.abap", "isInclude": true },
+  { "name": "ZFOO",     "type": "PROG", "file": "zfoo.prog.abap",     "isInclude": false }
+]
+

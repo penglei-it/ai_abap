@@ -1,0 +1,18 @@
+CLASS ZCL_DEMO_ADT_0429175553 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    METHODS add
+      IMPORTING iv_a TYPE i
+                iv_b TYPE i
+      RETURNING VALUE(rv_sum) TYPE i.
+ENDCLASS.
+
+CLASS ZCL_DEMO_ADT_0429175553 IMPLEMENTATION.
+  METHOD add.
+    " demo activation probe marker
+    rv_sum = iv_a + iv_b.
+  ENDMETHOD.
+ENDCLASS.

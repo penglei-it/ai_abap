@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "mcp-abap-adt": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-abap-adt"
+      ],
+      "env": {
+        "ABAP_ADT_BASE_URL": "http://<host>:<port>",
+        "ABAP_ADT_CLIENT": "200",
+        "ABAP_ADT_USER": "<user>",
+        "ABAP_ADT_PASSWORD": "<password>"
+      }
+    }
+  }
+}

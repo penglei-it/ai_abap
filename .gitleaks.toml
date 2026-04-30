@@ -1,0 +1,15 @@
+title = "Ai_Abap local leak detection config"
+
+[allowlist]
+description = "Allow known false positives in generated docs and binaries"
+paths = [
+  '''^images/''',
+  '''^docs/.*\.md$'''
+]
+
+[[rules]]
+id = "sap-connection-json-password"
+description = "Detect password fields in SAP connection json files"
+regex = '''(?i)"password"\s*:\s*"[^"]{3,}"'''
+path = '''(?i)docs/.*\.json$'''
+tags = ["sap", "password", "credentials"]

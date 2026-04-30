@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    gitleaks:
+      run: gitleaks detect --source . --config .gitleaks.toml --redact
+    abaplint:
+      run: npx --yes @abaplint/cli@latest -c abaplint.json

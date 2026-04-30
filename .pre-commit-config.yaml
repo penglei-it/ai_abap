@@ -1,0 +1,14 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.24.2
+    hooks:
+      - id: gitleaks
+        args: ["--config=.gitleaks.toml", "--redact"]
+
+  - repo: local
+    hooks:
+      - id: abaplint
+        name: abaplint
+        entry: npx --yes @abaplint/cli@latest -c abaplint.json
+        language: system
+        pass_filenames: false

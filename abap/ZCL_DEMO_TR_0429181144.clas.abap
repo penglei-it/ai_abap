@@ -1,0 +1,18 @@
+CLASS ZCL_DEMO_TR_0429181144 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    METHODS add
+      IMPORTING iv_a TYPE i
+                iv_b TYPE i
+      RETURNING VALUE(rv_sum) TYPE i.
+ENDCLASS.
+
+CLASS ZCL_DEMO_TR_0429181144 IMPLEMENTATION.
+  METHOD add.
+    " transport demo marker
+    rv_sum = iv_a + iv_b.
+  ENDMETHOD.
+ENDCLASS.

@@ -1,0 +1,12 @@
+{
+  "abapfs.remote": {
+    "CT-DV2": {
+      "url": "http://192.168.71.50:8001",
+      "username": "PENGL",
+      "password": "",
+      "client": "200",
+      "language": "ZH",
+      "allowSelfSigned": true
+    }
+  }
+}

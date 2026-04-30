@@ -1,0 +1,35 @@
+# Python cache
+__pycache__/
+*.pyc
+.mypy_cache/
+
+# Local temp logs and scratch outputs
+tmp_*.log
+tmp_*.txt
+tmp_*.json
+
+# ADT side-effect and verification snapshots
+abap/*.sidefx.*
+abap/*.verify.*
+abap/*.read.*
+abap/*.remote.*
+abap/*.active.*
+abap/*.inactive.*
+abap/*.before.*
+abap/*.after.*
+abap/*.fresh.*
+abap/*.restored.*
+abap/tmp_*.xml
+
+# Local backups
+*.bak
+
+# Local packaged artifacts
+*.vsix
+
+# Local credentials and IDE settings
+.adt.creds
+.cursor/
+.vscode/
+.code-workspace.code-workspace
+

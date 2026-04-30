@@ -1,0 +1,18 @@
+{
+  "syntax": {
+    "version": "v758",
+    "errorNamespace": "ABAP"
+  },
+  "global": {
+    "files": "/abap/**/*.clas.abap",
+    "skipGeneratedGatewayClasses": true
+  },
+  "dependencies": [],
+  "rules": {
+    "parser_error": true,
+    "unknown_types": false,
+    "check_syntax": false,
+    "unused_variables": false,
+    "start_at_tab": false
+  }
+}

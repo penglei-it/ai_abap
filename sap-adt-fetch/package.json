@@ -1,0 +1,117 @@
+{
+  "name": "sap-adt-fetch",
+  "displayName": "SAP ADT Fetch",
+  "description": "F12/Go to Definition for INCLUDE, REPORT, CLASS, INTERFACE via ADT API. Fallback when ABAP FS Language Server unavailable.",
+  "version": "0.2.1",
+  "publisher": "local",
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:sapAdt.fetchUnsupportedObject",
+    "onCommand:sapAdt.goToDefinition",
+    "onCommand:sapAdt.openIncludeFromWorkspace",
+    "onCommand:sapAdt.diagnose",
+    "onCommand:sapAdt.connectToEnvironment",
+    "onCommand:sapAdt.searchObjects",
+    "onCommand:sapAdt.pushFromManifest",
+    "onCommand:sapAdt.gotoGwServiceClasses",
+    "onCommand:sapAdt.selectTransportRequest",
+    "onCommand:sapAdt.listTransports",
+    "onCommand:sapAdt.findReferences",
+    "onCommand:sapAdt.activateObject",
+    "onCommand:sapAdt.runAbaplint",
+    "onCommand:sapAdt.compareWithSap",
+    "onLanguage:abap",
+    "onLanguage:plaintext",
+    "onView:sapAdt.classStructure"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "sapAdt.classStructure",
+          "name": "ABAP 类结构"
+        }
+      ]
+    },
+    "commands": [
+      { "command": "sapAdt.fetchUnsupportedObject", "title": "SAP: Fetch Object via ADT API" },
+      { "command": "sapAdt.goToDefinition", "title": "SAP: Go to Definition (ADT Fallback)" },
+      { "command": "sapAdt.openIncludeFromWorkspace", "title": "SAP: 从工作区打开 Include（平替，避免 500）" },
+      { "command": "sapAdt.diagnose", "title": "SAP ADT Fetch: 诊断" },
+      { "command": "sapAdt.connectToEnvironment", "title": "SAP ADT: 连接环境（选择环境并输入账号）" },
+      { "command": "sapAdt.searchObjects", "title": "SAP: 检索对象（按名称/模式）" },
+      { "command": "sapAdt.pushFromManifest", "title": "SAP: 按 Manifest 推送到 SAP" },
+      { "command": "sapAdt.gotoGwServiceClasses", "title": "SAP: 跳转到 GW Service 相关类 (MPC/DPC)" },
+      { "command": "sapAdt.openClassFromCodeLens", "title": "SAP: 打开类 (CodeLens)" },
+      { "command": "sapAdt.revealMethodInEditor", "title": "SAP: 定位到方法" },
+      { "command": "sapAdt.selectTransportRequest", "title": "SAP: 选择传输请求" },
+      { "command": "sapAdt.listTransports", "title": "SAP: 列出传输请求" },
+      { "command": "sapAdt.findReferences", "title": "SAP: 查找引用 (Where-Used)" },
+      { "command": "sapAdt.activateObject", "title": "SAP: 激活对象" },
+      { "command": "sapAdt.runAbaplint", "title": "SAP: 运行 abaplint 检查" },
+      { "command": "sapAdt.compareWithSap", "title": "SAP: 与 SAP 版本对比（源码差异）" }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "sapAdt.fetchUnsupportedObject", "when": "editorTextFocus" },
+        { "command": "sapAdt.openIncludeFromWorkspace", "when": "editorTextFocus" },
+        { "command": "sapAdt.compareWithSap", "when": "editorTextFocus && resourceLangId == abap" }
+      ]
+    },
+    "commandPalette": [
+      { "command": "sapAdt.fetchUnsupportedObject" },
+      { "command": "sapAdt.goToDefinition" },
+      { "command": "sapAdt.openIncludeFromWorkspace" },
+      { "command": "sapAdt.connectToEnvironment" },
+      { "command": "sapAdt.searchObjects" },
+      { "command": "sapAdt.pushFromManifest" },
+      { "command": "sapAdt.diagnose" },
+      { "command": "sapAdt.gotoGwServiceClasses" },
+      { "command": "sapAdt.selectTransportRequest" },
+      { "command": "sapAdt.listTransports" },
+      { "command": "sapAdt.findReferences" },
+      { "command": "sapAdt.activateObject" },
+      { "command": "sapAdt.runAbaplint" },
+      { "command": "sapAdt.compareWithSap" }
+    ],
+    "keybindings": [
+      { "command": "sapAdt.fetchUnsupportedObject", "key": "ctrl+shift+alt+f", "mac": "cmd+shift+alt+f" },
+      { "command": "sapAdt.connectToEnvironment", "key": "ctrl+shift+alt+l", "mac": "cmd+shift+alt+l" },
+      { "command": "sapAdt.compareWithSap", "key": "ctrl+shift+alt+d", "mac": "cmd+shift+alt+d" }
+    ],
+    "configuration": {
+      "title": "SAP ADT Fetch",
+      "properties": {
+        "sapAdt.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "SAP ADT base URL (单环境回退，如 http://host:8001)"
+        },
+        "sapAdt.username": { "type": "string", "description": "SAP 用户名（可选）" },
+        "sapAdt.password": { "type": "string", "description": "SAP 密码（可选）" },
+        "sapAdt.client": { "type": "string", "default": "", "description": "SAP 客户端号（如 200、310）" },
+        "sapAdt.environments": {
+          "type": "object",
+          "default": {},
+          "description": "多环境配置：{ 环境名: { url, client } }。账号通过「连接环境」命令输入"
+        },
+        "sapAdt.activeEnvironment": {
+          "type": "string",
+          "description": "当前激活的环境名（连接后自动设置）"
+        },
+        "sapAdt.abaplint.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否启用 abaplint 集成（需安装 abaplint: npm i -g abaplint）"
+        },
+        "sapAdt.abaplint.runOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "保存 ABAP 文件时是否自动运行 abaplint"
+        }
+      }
+    }
+  }
+}

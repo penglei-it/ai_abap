@@ -1,0 +1,21 @@
+meta {
+  name: ping adt
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{base_url}}{{adt_path}}/discovery
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: {{username}}
+  password: {{password}}
+}
+
+headers {
+  Accept: application/xml
+  sap-client: {{client}}
+}

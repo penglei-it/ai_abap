@@ -1,0 +1,6 @@
+[
+  { "name": "ZTMP_TOP", "type": "PROG", "file": "ztmp_top.inc.abap", "isInclude": true, "activate": false },
+  { "name": "ZTMP_F01", "type": "PROG", "file": "ztmp_f01.inc.abap", "isInclude": true, "activate": false },
+  { "name": "ZTMP", "type": "PROG", "file": "ztmp.prog.abap", "isInclude": false, "activate": true },
+  { "name": "ZCL_ICEC_ORDER", "type": "CLAS", "file": "ZCL_ICEC_ORDER.clas.abap", "activate": true }
+]
